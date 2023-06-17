@@ -23,8 +23,8 @@ const HitSale = () => {
                 </h2>
                 <div className="hitSale__row">
                     {
-                        isLoading ? <CardSkeleton cards={12}/>
-                            :
+                        // isLoading ? <CardSkeleton cards={12}/>
+                        //     :
                         hitSale.map((item) => (
                             <Fragment key={item.id}>
                                 <Card item={item}/>

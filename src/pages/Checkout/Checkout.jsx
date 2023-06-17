@@ -90,10 +90,24 @@ const Checkout = () => {
                             }
                             <li className="checkout__form-item checkout__form-item_count">
                                 <p className="checkout__form-product">
+                                    Количество бонусов:
+                                </p>
+                                <p className="checkout__form-price">
+                                    {user.point}
+                                </p>
+                            </li>
+{/*<li>*/}
+{/*    <label className="checkout__form-lab">*/}
+{/*        <input type="number" className='checkout__form-label__input'/>*/}
+{/*        Оплата бонусами*/}
+{/*    </label>*/}
+{/*</li>*/}
+                            <li className="checkout__form-item checkout__form-item_count">
+                                <p className="checkout__form-product">
                                     Итоговая стоимость:
                                 </p>
                                 <p className="checkout__form-price">
-                                     {user.carts?.reduce((acc, rec) => acc + rec.price * rec.count , 0)}₽
+                                     {user.carts?.reduce((acc, rec) => acc + rec.price * rec.count  - user.point, 0)}₽
                                 </p>
                             </li>
                         </ul>
@@ -118,9 +132,8 @@ const Checkout = () => {
                             <label className="checkout__form-label">
                                 <input type="checkbox"/>
                                 Оплата наличными
-                                <input type="input"/>
-                                Оплата бонусами
                             </label>
+
                             <button className="checkout__form-btn" type="submit">
                                 Разместить заказ
                             </button>

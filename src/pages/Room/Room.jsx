@@ -44,43 +44,43 @@ const Room = () => {
                 </div>
                 <div className="room__row">
                     <form className="room__form">
-                        <h2 className="cart__title">
+                        <h2 className='cart__title'>
                             Личные данные
                         </h2>
                         <div className="room__form-top">
                             <label className="room__form-label">
                                 Имя
-                                <input type="text" placeholder="Дмитрий"/>
+                                <input defaultValue={user.name} type="text" placeholder='name'/>
                             </label>
                             <label className="room__form-label">
                                 E-mail
-                                <input type="email" placeholder="morlibae@gmail.com"/>
+                                <input defaultValue={user.email} type="email" placeholder='email'/>
                             </label>
                             <label className="room__form-label">
                                 Фамилия
-                                <input type="text" placeholder="Галькевич"/>
+                                <input defaultValue={user.surname} type="text" placeholder='surname'/>
                             </label>
                             <label className="room__form-label">
                                 Номер телефона
-                                <input type="tel" placeholder="+7 (901) 784-65-45"/>
+                                <input defaultValue={user.phone} type="tel" placeholder='+7 (901) 784-65-45'/>
                             </label>
                         </div>
                         <div className="room__form-address room__form-top">
                             <label className="room__form-label">
                                 Город
-                                <input type="text" placeholder="Москва"/>
+                                <input defaultValue={user.city} type="text" placeholder='Москва'/>
                             </label>
                             <label className="room__form-label room__form-label_street">
                                 Улица
-                                <input type="text" placeholder="Москва"/>
+                                <input type="text" placeholder='Святоозерская'/>
                             </label>
                             <label className="room__form-label">
                                 Дом/Корпус
-                                <input type="text" placeholder="16/1"/>
+                                <input type="text" placeholder='16/1'/>
                             </label>
                             <label className="room__form-label">
                                 Квартира
-                                <input type="text" placeholder="29"/>
+                                <input type="text" placeholder='29'/>
                             </label>
                         </div>
                         <button className="room__form-btn">
@@ -92,29 +92,35 @@ const Room = () => {
                             Мои заказы
                         </h2>
                         <tr className="room__table-top">
-                            <td className="room__table-title">Товар</td>
+                            <td className="room__table-title">Количество товаров</td>
                             <td className="room__table-title">Цена</td>
                             <td className="room__table-title">Дата</td>
                             <td className="room__table-title">Статус</td>
                         </tr>
-                        <tr className="room__table-info">
-                            <td className="room__table-product">
-                                <img src={product} alt=""/>
-                                Кускен Navy Blue
-                            </td>
-                            <td>
-                                16990
-                            </td>
-                            <td>
-                                01.05.2020
-                            </td>
-                            <td>
-                                Ожидается
-                            </td>
-                        </tr>
-                        <p className="room__all">
-                            Смотреть все
-                        </p>
+                        {
+                            user.orders[0].order.map((item) => (
+                                <tr className='room__table-info'>
+                                    <td className="room__table-product">
+                                        <img src={`${item.images[0]}`} alt=""/>
+                                        {item.title}
+                                    </td>
+                                    <td>
+                                        {item.price}
+                                    </td>
+                                    <td>
+                                        {item.count}
+                                    </td>
+                                    <td>
+                                        01.05.2023
+                                    </td>
+                                    <td>
+                                        Ожидается
+                                    </td>
+                                </tr>
+                            ))
+                        }
+
+                        <p className="room__all">итого {user.orders[0].totalPrice}</p>
                     </table>
                 </div>
             </div>

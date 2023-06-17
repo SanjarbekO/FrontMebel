@@ -3,6 +3,7 @@ import HeaderCenter from "./HeaderCenter/HeaderCenter.jsx";
 import {useLocation} from "react-router-dom";
 
 
+
 const Header = () => {
 
 
@@ -17,6 +18,7 @@ const Header = () => {
 
             <div className="container">
                 <HeaderCenter/>
+
             </div>
         </header>
     );
